@@ -11,10 +11,21 @@ pipeline {
                 echo "unit test is done here."
             }
         }
-        stage('Sonar Scan'){
+        // stage('Sonar Scan'){
+        //     steps{
+        //         sh 'ls -ltr'
+        //         sh "sonar-scanner"
+        //     }
+        // }
+        stage('Build'){
             steps{
                 sh 'ls -ltr'
-                sh "sonar-scanner"
+                sh 'zip -r ./* --exclude=.git'
+            }
+        }
+        stage('Deploy'){
+            steps{
+                echo "Deployment"
             }
         }
         
@@ -22,7 +33,7 @@ pipeline {
         post{
             always{
                 echo 'cleaning up workspaced'
-                deleteDir()
+                //deleteDir()
             }
         }
 }
