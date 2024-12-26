@@ -11,6 +11,11 @@ pipeline {
                 echo "unit test is done here."
             }
         }
+        stage('Sonar Scan'){
+            steps{
+                sh "sonar-scanner"
+            }
+        }
         
     }
 }
