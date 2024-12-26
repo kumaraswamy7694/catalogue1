@@ -19,4 +19,10 @@ pipeline {
         }
         
     }
+        post{
+            always{
+                echo 'cleaning up workspaced'
+                deleteDir()
+            }
+        }
 }
