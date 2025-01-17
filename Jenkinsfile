@@ -1,5 +1,10 @@
 pipeline {
     agent { node { label 'AGENT-1' } }
+    environment{
+        // here if you create any variable you will have global access, since it is global
+        packageVersion = ''
+
+    }
     stages {
         stage('Get version'){
             steps{
@@ -34,6 +39,7 @@ pipeline {
         stage('SAST'){
             steps{
                 echo " SAST Done"
+                echo "package version: $packageVersion"
             }
         }
     //     // install pipeline utiluty if not installed
